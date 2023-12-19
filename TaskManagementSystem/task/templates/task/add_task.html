@@ -1,0 +1,17 @@
+{% extends "base.html" %} {% block content %}
+<div class="container" style="width: 30%; padding-top: 60px">
+  <form method="post">
+    {% csrf_token %} {{form.as_p}}
+    <div class="mb-3">
+      <label for="id_category" class="form-label">Category:</label>
+      <select class="form-select" name="category" id="id_category">
+        {% for category in categories %}
+        <option value="{{category.id}}">{{category.categoryName}}</option>
+        {% endfor %}
+      </select>
+    </div>
+    <button type="submit" class="btn btn-danger">Submit</button>
+  </form>
+</div>
+
+{% endblock %}

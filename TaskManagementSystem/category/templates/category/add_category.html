@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="container">
+    <div class="row">
+        <div class="col-4 m-auto "  style="display: block;">
+                <form method="post">
+                    <h1>Add Category</h1>
+                    {% csrf_token%}
+                    {{ form.as_p }}
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </form>
+        </div>
+        <div class="col-4 m-auto pt-5">
+            <h2>Categories</h2>            
+            <div >
+                {% for category in categories%}
+                <li style="list-style: none; padding: 10px ;">
+                    {{category.categoryName}}
+                    <a href="{% url 'delete_category' category.id %}" class="btn btn-danger"> Delete</a>
+                </li>  
+      
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
